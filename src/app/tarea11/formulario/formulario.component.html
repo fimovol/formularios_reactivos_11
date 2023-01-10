@@ -1,0 +1,39 @@
+<p>formulario works!</p>
+<section class="container-sm">
+    <form [formGroup]="formLogin" (submit)="send()">
+        <section class="form-group">
+            <label for="nombre">nombre</label>
+            <input class="form-control" type="text" 
+            name="nombre" formControlName="nombre">
+        </section>
+        <section class="form-group">
+            <label for="email">email</label>
+            <input class="form-control" type="text" name="email" 
+            formControlName="email">
+        </section>
+        <section class="form-group">
+            <label for="mensaje">mensaje</label>
+            <textarea class="form-control" name="mensaje" 
+            id="" cols="30" rows="10"
+            formControlName="mensaje"></textarea>
+        </section>
+        <!-- <section class="form-group">
+            <label for="password">password</label>
+            <input class="form-control" type="text" name="password" formControlName="password">
+        </section>
+
+        <section class="form-group">
+            <label for="terminos">terminos</label>
+            <input class="form-check" type="checkbox" name="terms" formControlName="terms">
+        </section> -->
+
+        <section class="form-group">
+            <button class="btn btn-primary" type="submit" 
+            [disabled]="formLogin.invalid" >enviar</button>
+        </section>
+    </form>
+    <p *ngIf="formLogin.valid">todos los datos son validos</p>
+</section>
+<section>
+    
+</section>

@@ -1,0 +1,59 @@
+<h1>formulario basado en template</h1>
+<section class="container-sm">
+    <form #formulario="ngForm">
+        <section class="form-group">
+            <label for="">username</label>
+            <input type="text" class="form-control" name="user"
+            [(ngModel)]="model.username"
+            required
+            #username="ngModel">
+            <section *ngIf="username.invalid && (username.dirty || username.touched)" class="alert alert-danger">
+                <section *ngIf="username.errors?.['required']">
+                    El usuario es requerido
+                </section>
+            </section>
+        </section>
+        <section class="form-group">
+            <label for="">password</label>
+            <input type="password" class="form-control" name="pass"
+            [(ngModel)]="model.password"
+            required
+            minlength="4"
+            #password="ngModel">
+            <section *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+                <section *ngIf="password.errors?.['required']">
+                    El password es requerido
+                </section>
+                <section *ngIf="password.errors?.['minlength']">
+                    El password debe tener al menos 4 caracteres
+                </section>
+            </section>
+        </section>
+        <section class="form-group">
+            <label for="paises">paises</label>
+            <select class="form-select" name="paises" [(ngModel)]="model.pais">
+                <option *ngFor="let item of paises" value={{item.value}} >{{item.text}} </option>
+            </select>
+        </section>
+
+        <section class="form-group">
+            <label for="">
+                <input type="checkbox" name="" id="" [(ngModel)]="model.ofertas"
+                required
+                #checkbox="ngModel">
+                esta es un menasaje
+             </label>
+             <section *ngIf="checkbox.invalid && (checkbox.dirty)" class="alert alert-danger">
+                <section *ngIf="checkbox.errors?.['required']">
+                    El usuario es requerido
+                </section>
+            </section>
+        </section>
+
+        <section class="form-group">
+            <button type="submit" class="btn btn-primary" (click)="Enviar()"
+            [disabled]="!formulario.form.valid">enviar</button>
+            <button type="cancel" class="btn btn-warning" (click)="Cancelar()">cancelar</button>
+        </section>
+    </form>
+</section>
